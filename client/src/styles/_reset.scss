@@ -1,0 +1,62 @@
+@import './mixin';
+
+// resetting styling
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/*==================== BASE ====================*/
+body {
+    font-family: var(--font-body);
+    font-size: var(--normal-font-size);
+    margin: 0 0 var(--header-height) 0;
+    background-color: var(--app-color);
+    color: var(--app-color-custom);
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100vh;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn {
+    width: 23%;
+    padding: 1.3rem;
+    color: var(--app-name-second);
+    background-color: var(--app-color);
+    border: 3px solid var(--app-color);
+    text-transform: uppercase;
+    cursor: pointer;
+
+    letter-spacing: var(--letter-spacing-btn);
+    transition: 0.3;
+
+    &:hover {
+        background: transparent;
+        color: var(--app-color);
+    }
+
+    @include tablet {
+        width: 30%;
+        padding: 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    @include mobile {
+        width: 50%;
+        font-size: 0.6rem;
+        padding: 0.4rem;
+    }
+}
