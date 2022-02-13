@@ -3,84 +3,50 @@ import React from 'react';
 // importing Link
 import { Link } from "react-router-dom";
 
-// importing scss
+// importing alex_logo
+// import alex_logo from "../images/alex_logo.png";
 
-// social media variables
-// let gitHub = 'https://github.com/Alex-Ksairi';
-// let linkedIn = 'https://www.linkedin.com/in/alexander-ksairi-7563a1211/';
-// let vercel = 'https://vercel.com/dashboard';
-// const facebook = 'https://www.facebook.com/alexander.azar.71';
-// const instagram = 'https://www.instagram.com/alexw_atch/';
+// importing scss
+import "../styles/Navbar.scss";
 
 export default function NavBar() {
-    // // collapse the menu bar by using useState
-    // let [isOpen, setIsOpen] = React.useState(true);
-
-    // // scrollToTop
-    // let scrollToTop = () => {
-    //     return window.scrollTo({
-    //             left: 0,
-    //             top: 0,
-    //             behavior: 'smooth',
-    //     });
-    // }
 
     return (
         <React.Fragment>
             <nav>
-                <Link to="/">home</Link>
-                <a href="#about">about</a>
-                <a href="#skills">skills</a>
-                <a href="#quali">quali</a>
-                <a href="#project">portfolio</a>
-                <Link to="/contact">contact</Link>
+                <div className="menu_container">
+                    <div className="menu_wrap">
+                        <input type="checkbox" className="menu_toggler" />
+                        <div className="menu_hamburger">
+                            <div className="menu_line"></div>
+                        </div>
+                        <div className="menu_overlay_container">
+                            <div className="menu_overlay_subcontainer">
+                                <div className="menu_overlay_links">
+                                    <Link to="/">Home</Link>
+                                    <a href="#about">About</a>
+                                    <a href="#skills">Skills</a>
+                                    <a href="#qualifications">Qualifications</a>
+                                    <a href="#projects">Projects</a>
+                                    <Link to="/contact">Contact</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/* <div className="nav_container">
+                    <div className="menu_container">
+                        <div className="menu_subcontainer">
+                            <div className="menu_lines"></div>
+                        </div>
+                    </div>
+                    <div className="logo_container">
+                        <Link to="/">
+                            <img src={alex_logo} alt="alex_logo" />
+                        </Link>
+                    </div>
+                </div> */}
             </nav>
         </React.Fragment>
     )
 }
-
-/*
-
-<nav className="nav nav-dark" id={isOpen ? '' : 'radius'}>
-                <div className="nav-opened-container nav-closed-container">
-                    <Link to="/" className="nav-logo" onClick={scrollToTop}>
-                        <div className="own-logo">
-                            <div className="logo-name"> <div className="first-name">alexander</div> <span className="span-last-name">ksairi</span> </div>
-                        </div>
-                    </Link>
-                    <div className="navigation" id={isOpen ? "hidden" : ""} onClick={() => setIsOpen(!isOpen)}> 
-                        <div className="links">
-                            <Link to="/" onClick={scrollToTop}><i className="fas fa-home"></i>home</Link>
-                        </div>
-                        <div className="links">                           
-                            <a href="#about"><i className="fas fa-user"></i>about</a>
-                        </div>
-                        <div className="links">                           
-                            <a href="#skills"><i className="fas fa-file-alt"></i>skills</a>
-                        </div>
-                        <div className="links">                           
-                            <a href="#qualification"><i className="fas fa-project-diagram"></i>qualification</a>
-                        </div>
-                        
-                        <div className="links">                         
-                            <a href="#portfolio"><i className="fas fa-image"></i>portfolio</a>
-                        </div>
-                        <div className="links">
-                            <Link to="/contact-me"><i className="fab fa-telegram-plane"></i>contact me</Link>
-                        </div>
-                    </div>
-                    <div className="social-media" id={isOpen ? "hidden" : ""} onClick={() => setIsOpen(!isOpen)}> 
-                        <a href={gitHub} target="_blank" rel="noreferrer"><i className="fab fa-github"></i></a>
-                        <a href={linkedIn} target="_blank" rel="noreferrer"><i className="fab fa-linkedin"></i></a>
-                        <a href={vercel} target="_blank" rel="noreferrer"><i className="fas fa-globe"></i></a>
-                        <a href={facebook} target="_blank" rel="noreferrer"><i className="fab fa-facebook"></i></a>
-                        <a href={instagram} target="_blank" rel="noreferrer"><i className="fab fa-instagram"></i></a>
-                    </div>
-                    
-                    <div className="nav-close" id={isOpen ? "hidden" : ""} onClick={() => setIsOpen(!isOpen)}>x</div>
-                    <div className="nav-toggle" onClick={() => setIsOpen(!isOpen)}><i className="fas fa-bars" id={isOpen ? "" : "hidden"}></i></div>
-                </div>
-
-
-
-*/

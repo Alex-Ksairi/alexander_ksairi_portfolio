@@ -1,0 +1,202 @@
+nav {
+    height: 90px;
+
+    .menu_container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: var(--z-fixed);
+
+        .menu_wrap {
+            cursor: pointer;
+            
+            .menu_toggler {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 50px;
+                height: 50px;
+                opacity: 0;
+                z-index: 2;
+            }
+
+            .menu_hamburger {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 60px;
+                height: 60px;
+                z-index: var(--z-fixed);
+                padding: 1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: var(--app-name-second);
+
+                .menu_line {
+                    position: relative;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: all .4s ease;
+
+                    &::after, &::before {
+                        content: "";
+                        position: absolute;
+                        top: -10px;
+                        width: 100%;
+                        height: 2px;
+                        background-color: inherit;
+                        z-index: var(--z-fixed);
+                    }
+
+                    &::after {
+                        top: 10px;
+                    }
+                }
+            }
+
+            .menu_toggler:checked + .menu_hamburger {
+                .menu_line {
+                    transform: rotate(135deg);
+                }
+            }
+
+            .menu_toggler:checked + .menu_hamburger .menu_line::before, 
+            .menu_toggler:checked + .menu_hamburger .menu_line::after {
+                top: 0;
+                transform: rotate(90deg);
+            }
+
+            .menu_toggler:checked:hover + .menu_hamburger {
+                .menu_line {
+                    transform: rotate(225deg);
+                }
+            }
+
+            // show menu
+            .menu_toggler:checked ~ .menu_overlay_container {
+                visibility: visible;
+            }
+
+            .menu_toggler:checked ~ .menu_overlay_container {
+                .menu_overlay_subcontainer {
+                    transform: scale(1);
+                    transition-duration: .75s;
+                }
+            }
+
+            .menu_toggler:checked ~ .menu_overlay_container {
+                .menu_overlay_subcontainer {
+                    .menu_overlay_links {
+                        transition: opacity 0,4s ease;
+                        opacity: 1;
+                    }
+                }
+            }
+
+            // overlay
+            .menu_overlay_container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                visibility: hidden;
+
+                .menu_overlay_subcontainer {
+                    background-color: rgba(0, 0, 0, .6);
+                    border-radius: 50%;
+                    width: 200vw;
+                    height: 200vw;
+                    display: flex;
+                    flex: none;
+                    justify-content: center;
+                    align-items: center;
+                    transition: all .4s ease;
+                    transform: scale(0);
+
+                    .menu_overlay_links {
+                        text-align: center;
+                        max-width: 90vw;
+                        max-height: 100vh;
+                        transition: opacity .4s ease;
+                        opacity: 0;
+                        display: grid;
+                        grid-template-columns: 1fr;
+
+                        a {
+                            padding-bottom: 1rem;
+                            color: #fff;
+                            font-size: 1.3rem;
+                            text-align: left;
+                            transition: color .4s ease;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // .nav_container {
+    //     display: flex;
+    //     justify-content: space-between;
+    //     align-items: center;
+
+    //     .menu_container {
+    //         margin-bottom: 6px;
+    //         margin-left: 20px;
+
+    //         .menu_subcontainer {
+    //             width: 40px;
+    //             cursor: pointer;
+
+    //             &:before, &:after, .menu_lines {
+    //                 background: var(--app-color-second);
+    //                 content: "";
+    //                 display: block;
+    //                 height: 5px;
+    //                 border-radius: 3px;
+    //                 margin: 7px 0;
+    //                 transition: all 0.5s ease-in-out;
+    //             }
+
+    //             .menu_lines {
+    //                 width: 25px;
+    //             }
+
+    //             &:hover::before {
+    //                 transform: rotate(45deg) translate(22px, -5px);
+    //             }
+
+    //             &:hover::after {
+    //                 transform: rotate(-45deg) translate(22px, 5px);
+    //             }
+
+    //             &:hover .menu_lines {
+    //                 transform: translateX(-50px);
+    //                 background-color: transparent;
+    //             }
+    //         }
+    //     }
+
+    //     .logo_container {
+    //         margin-right: 43%;
+
+    //         img {
+    //             width: 170px;
+
+    //             &:hover {
+    //                 transform: scale(1.1);
+    //             }
+    //         }
+    //     }
+    // }
+}
