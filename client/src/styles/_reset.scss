@@ -13,14 +13,15 @@ body {
     font-family: var(--font-body);
     font-size: var(--normal-font-size);
     margin: 0 0 var(--header-height) 0;
-    // background-color: var(--app-color);
-    background-color: #fff;
+    background-color: var(--app-color);
+    // background-color: #fff;
     color: var(--app-color-custom);
 }
 
 html {
     scroll-behavior: smooth;
     height: 100vh;
+    overflow: hidden;
 }
 
 ul {

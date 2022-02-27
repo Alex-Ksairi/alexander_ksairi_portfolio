@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 
 // importing page sections
@@ -8,10 +9,19 @@ import React from 'react';
 
 function Home() {
   return <div>
-      {/* <About />
-      <Skills />
-      <Qualifications />
-      <Projects /> */}
+      <motion.h1 
+      initial={{ y: 500 }} 
+      animate={{
+        y: 0,
+        transition: { duration: 0.5, type:"spring" },
+      }}
+      exit={{
+        y: 500,
+        transition: { duration: 0.5, type:"spring", ease:"easeInOut" },
+      }}
+      >
+      Home
+      </motion.h1>
   </div>;
 }
 

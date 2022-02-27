@@ -1,8 +1,22 @@
+import { motion } from 'framer-motion';
 import React from 'react';
+
 
 function Contact() {
   return <div>
-      <h1>Hello from contact</h1>
+      <motion.h1 
+      initial={{ y: 500 }} 
+      animate={{
+        y: 0,
+        transition: { duration: 0.5, type:"spring" },
+      }}
+      exit={{
+        y: 500,
+        transition: { duration: 0.5, type:"spring", ease:"easeInOut" },
+      }}
+      >
+      Contact
+      </motion.h1>
   </div>;
 }
 
