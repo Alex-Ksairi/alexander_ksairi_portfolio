@@ -1,86 +1,150 @@
 import React from 'react';
 
 // importing Link
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+// importing alex_logo
+import alex_logo from "../images/alex_logo.png";
+
+// profile pic
+import alex_pic from "../images/alex_pic.jpeg";
+
+// icons
+import home from "../images/home.svg";
+import code from "../images/code.svg";
+import user from "../images/user.svg";
+import archive from "../images/archive.svg";
+import git_pull_request from "../images/git-pull-request.svg";
+import send from "../images/send.svg";
+
+// social media icons
+import facebook from "../images/facebook.svg";
+import linkedin from "../images/linkedin.svg";
+import instagram from "../images/instagram.svg";
+import github from "../images/github.svg";
 
 // importing scss
+import "../styles/Navbar.scss";
 
-// social media variables
-// let gitHub = 'https://github.com/Alex-Ksairi';
-// let linkedIn = 'https://www.linkedin.com/in/alexander-ksairi-7563a1211/';
-// let vercel = 'https://vercel.com/dashboard';
-// const facebook = 'https://www.facebook.com/alexander.azar.71';
-// const instagram = 'https://www.instagram.com/alexw_atch/';
+// styled components 
+import styled from 'styled-components';
+
+const Button = styled.button`
+    background-color: var(--btn);
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    color: var(--app-color-custom);
+    margin: 0.5rem 0 0 0.5rem;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    &::before, &::after {
+        content: "";
+        background-color: var(--app-color-custom);
+        height: 2px;
+        width: 1rem;
+        position: absolute;
+        transition: all 0.3s ease;
+    }
+
+    &::before {
+        top: ${props => props.clicked ? "1.5" : "1rem"};
+        transform: ${props => props.clicked ? "rotate(135deg)" : "rotate(0)"};
+    }
+
+    &::after {
+        top: ${props => props.clicked ? "1.2" : "1.5rem"};
+        transform: ${props => props.clicked ? "rotate(-135deg)" : "rotate(0)"};
+    }
+`;
+
+const LinksContainer = styled.ul`
+    width: ${props => (props.clicked ? "12rem" : "3.5rem")};
+`;
+
+const Item = styled(NavLink)`
+    text-direction: none;
+    width: 100%;
+`;
+
+const LinkText = styled.span`
+    width: ${props => (props.clicked ? "100%" : "0")};
+    margin-left: ${props => (props.clicked ? "1.5rem" : "0")};
+    overflow: hidden;
+    transition: all .3s ease;
+`;
+
+const Profile = styled.div`
+    width: ${props => (props.clicked ? "14rem" : "3rem")};
+    margin-left: ${props => (props.clicked ? "9rem" : "0")};
+`;
+
+const Social = styled.div`
+    display: ${props => (props.clicked ? "flex" : "none")};
+`;
 
 export default function NavBar() {
-    // // collapse the menu bar by using useState
-    // let [isOpen, setIsOpen] = React.useState(true);
 
-    // // scrollToTop
-    // let scrollToTop = () => {
-    //     return window.scrollTo({
-    //             left: 0,
-    //             top: 0,
-    //             behavior: 'smooth',
-    //     });
-    // }
+    // useState, useClick
+    const [click, setClick] = React.useState(false);
+    const handleClick = () => setClick(!click);
+
+    const [profileClick, setProfileClick] = React.useState(false);
+    const handleProfileClick = () => setProfileClick(!profileClick);
 
     return (
         <React.Fragment>
-            <nav>
-                <Link to="/">home</Link>
-                <a href="#about">about</a>
-                <a href="#skills">skills</a>
-                <a href="#quali">quali</a>
-                <a href="#project">portfolio</a>
-                <Link to="/contact">contact</Link>
+            <nav className='nav'>
+                <Button className="menu_btn" clicked={click} onClick={() => handleClick()}></Button>
+                <div className="navi_container">
+                    <div className="logo_container">
+                        <img src={alex_logo} alt="alex_logo" />
+                    </div>
+                    <LinksContainer className="links_container" clicked={click}>
+                        <Item className='links' exact activeClassName="selected" to="/" onClick={() => setClick(false)}>
+                            <img src={home} alt="home" />
+                            <LinkText clicked={click} className="home">home</LinkText>
+                        </Item>
+                        <Item className='links' exact activeClassName="selected" to="/about" onClick={() => setClick(false)}>
+                            <img src={user} alt="user" />
+                            <LinkText clicked={click} className="about">about</LinkText>
+                        </Item>
+                        <Item className='links' exact activeClassName="selected" to="/skills" onClick={() => setClick(false)}>
+                            <img src={code} alt="code" />
+                            <LinkText clicked={click} className="skills">skills</LinkText>
+                        </Item>
+                        <Item className='links' exact activeClassName="selected" to="/qualifications" onClick={() =>setClick(false)}>
+                            <img src={git_pull_request} alt="git_pull_request" />
+                            <LinkText clicked={click} className="qualifications">qualifications</LinkText>
+                        </Item>
+                        <Item className='links' exact activeClassName="selected" to="/projects" onClick={() => setClick(false)}>
+                            <img src={archive} alt="archive" />
+                            <LinkText clicked={click} className="projects">projects</LinkText>
+                        </Item>
+                        <Item className='links' exact activeClassName="selected" to="/contact" onClick={() => setClick(false)}>
+                            <img src={send} alt="send" />
+                            <LinkText clicked={click} className="contact">contact</LinkText>
+                        </Item>
+                    </LinksContainer>
+
+                    <Profile className="profile_container" clicked={profileClick}>
+                        <img src={alex_pic} alt="alex_pic" onClick={() => handleProfileClick()} />
+                        <Social className="social_container" clicked={profileClick}>
+                            <a href="www.facebook.com/Alex_Ksairi"><img src={facebook} alt="facebook" /></a>
+                            <a href="www.github.com/Alex_Ksairi"><img src={github} alt="github" /></a>
+                            <a href="www.linkedin.com/Alex_Ksairi"><img src={linkedin} alt="linkedin" /></a>
+                            <a href="www.instagram.com/Alex_Ksairi"><img src={instagram} alt="instagram" /></a>
+                        </Social>
+                    </Profile>
+                </div>
             </nav>
         </React.Fragment>
     )
 }
-
-/*
-
-<nav className="nav nav-dark" id={isOpen ? '' : 'radius'}>
-                <div className="nav-opened-container nav-closed-container">
-                    <Link to="/" className="nav-logo" onClick={scrollToTop}>
-                        <div className="own-logo">
-                            <div className="logo-name"> <div className="first-name">alexander</div> <span className="span-last-name">ksairi</span> </div>
-                        </div>
-                    </Link>
-                    <div className="navigation" id={isOpen ? "hidden" : ""} onClick={() => setIsOpen(!isOpen)}> 
-                        <div className="links">
-                            <Link to="/" onClick={scrollToTop}><i className="fas fa-home"></i>home</Link>
-                        </div>
-                        <div className="links">                           
-                            <a href="#about"><i className="fas fa-user"></i>about</a>
-                        </div>
-                        <div className="links">                           
-                            <a href="#skills"><i className="fas fa-file-alt"></i>skills</a>
-                        </div>
-                        <div className="links">                           
-                            <a href="#qualification"><i className="fas fa-project-diagram"></i>qualification</a>
-                        </div>
-                        
-                        <div className="links">                         
-                            <a href="#portfolio"><i className="fas fa-image"></i>portfolio</a>
-                        </div>
-                        <div className="links">
-                            <Link to="/contact-me"><i className="fab fa-telegram-plane"></i>contact me</Link>
-                        </div>
-                    </div>
-                    <div className="social-media" id={isOpen ? "hidden" : ""} onClick={() => setIsOpen(!isOpen)}> 
-                        <a href={gitHub} target="_blank" rel="noreferrer"><i className="fab fa-github"></i></a>
-                        <a href={linkedIn} target="_blank" rel="noreferrer"><i className="fab fa-linkedin"></i></a>
-                        <a href={vercel} target="_blank" rel="noreferrer"><i className="fas fa-globe"></i></a>
-                        <a href={facebook} target="_blank" rel="noreferrer"><i className="fab fa-facebook"></i></a>
-                        <a href={instagram} target="_blank" rel="noreferrer"><i className="fab fa-instagram"></i></a>
-                    </div>
-                    
-                    <div className="nav-close" id={isOpen ? "hidden" : ""} onClick={() => setIsOpen(!isOpen)}>x</div>
-                    <div className="nav-toggle" onClick={() => setIsOpen(!isOpen)}><i className="fas fa-bars" id={isOpen ? "" : "hidden"}></i></div>
-                </div>
-
-
-
-*/

@@ -1,0 +1,106 @@
+.nav {
+    position: fixed;
+
+    .navi_container {
+        background-color: var(--btn);
+        width: 3.5rem;
+        height: 80vh;
+        border-radius: 0 30px 30px 0;
+        margin-top: 1.5rem;
+        padding: 1rem 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        position: relative;
+
+        .logo_container {
+            width: 3.8rem;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .links_container {
+            color: var(--app-color-custom);
+            background-color: var(--btn);
+            list-style: none;
+            transition: all .3s ease;
+            border-radius: 0 30px 30px 0;
+            padding: 2rem 0;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            position: absolute;
+            top: 6rem;
+            left: 0;
+
+            .links {
+                padding: 1rem 0;
+                cursor: pointer;
+                padding-left: 0.5rem;
+                color: var(--app-color-custom);
+                text-transform: capitalize;
+
+                display: flex;
+
+                &:hover {
+                    border-right: 4px solid var(--app-color-custom);
+                    // img color on hover !!!
+                }
+
+                img {
+                    width: 1.6rem;
+                    height: auto;
+                    // img color !!!
+                }
+            }
+        }
+
+        .profile_container {
+            height: 3rem;
+            background-color: var(--btn);
+            color: var(--app-color-custom);
+            border-radius: 0 30px 30px 0;
+            transition: all .3s ease;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 50%;
+                border: 2px solid transparent;
+                transition: all .3s ease;
+                cursor: pointer;
+
+                &:hover {
+                    border: 2px solid var(--custom-color);
+                    padding: 2px;
+                    transition: all .3s ease;
+                }
+            }
+
+            .social_container {
+                justify-content: space-between;
+                align-items: center;
+                
+                a {
+                    img {
+                        width: 1.6rem;
+                        height: auto;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
